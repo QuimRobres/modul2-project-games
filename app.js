@@ -19,8 +19,9 @@ require('./configs/passport.config')(app);
 
 //Routes
 const index = require("./routes/index");
-
+const authRoutes = require('./routes/auth.routes')
 
 app.use("/", index);
+app.use('/public', authRoutes);
 
 module.exports = app;
