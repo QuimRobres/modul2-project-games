@@ -2,7 +2,7 @@
 
 ### MVP
 
-Data Base platform where users can search for board games by different filters ("Nam of the game", "duration", players", etc.). When the user registers is allowed to create a list of the games that owns, and also create a wish list (visible for other users, only editable by the owner of the list.).
+Data Base platform where users can search for board games by different filters ("Name of the game", "duration", "players", etc.). When the user registers is allowed to create a list of the games that owns, and also create a wish list (visible for other users, only editable by the owner of the list.).
 
 #### Backlog
 
@@ -54,9 +54,9 @@ Data Base platform where users can search for board games by different filters (
 
 Homepage :  button for signup, button for login and search bar.
 
-Homepage when user is Signedup: button for logout and button for profile.
+Homepage when user is signed up: button for logout and button for profile.
 
-Display results: a general view of all the games searched by different criterion (alphabetical, time duration, etc.), and also ordered by different criterion.
+Display results: a general view of all the games searched by different criteria (alphabetical, time duration, etc.), and also ordered by different criteria.
 
 Game details: show the information of the game you clicked on.
 
@@ -64,17 +64,17 @@ Sign up: allows user to register and gain acces to different features.
 
 Log in: allows the user to acces the page if it's registered.
 
-Log out: allows the user to logout the session.
+Log out: allows the user to log out the session.
 
 Edit profile: allows user to change information (email, password). Also create a wishlist.
 
-Own games: a list of the games that the user owes.
+Own games: a list of the games that the user owns.
 
 Pick game function: pick a random game of the list.
 
-Create wishlist: list's owner can edit It. Other users only read it.
+Create wishlist: list owner can edit it. Other users only read it.
 
-Comments (optional): add comments and note to different games.
+Comments (optional): add comments and rating to different games.
 
  
 
@@ -126,7 +126,9 @@ Comments (optional): add comments and note to different games.
 ```javascript
 {
     "name": String,
-    "number_of_players": Number,
+    "min_time": Number,
+    "max_time": Number,
+    "minimum_age": Number,
     "duration": Number,
     "genre": [String],
     "images": [{objects}],
