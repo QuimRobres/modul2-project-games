@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,50 @@
   <title>{{title}}</title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
+
 <body>
+  <nav class='nav-bar'>
+    <a href='#index'>Home</a>
+    <ul class='if-no-login'>
+      <li><a href='#login'>Log in</a></li>
+      <li><a href='#signin'>Sign up</a></li>
+    </ul>
+    <ul class='if-yes-login'>
+      <li><a href='#profile'>Profile</a></li>
+      <li><a href='#logout'>Log out</a></li>
+    </ul>
+  </nav>
+  <header class='link-bar'>
+    <ul>
+      <li>
+        <div class="dropdown">
+          <button class="dropbtn">Search Game</button>
+          <div class="dropdown-content">
+            <a href="#">Popular games</a>
+            <a href="#">Play with kids</a>
+            <a href="#">Search by number of players</a>
+            <a href="#">Search by game duration</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="dropdown">
+          <button class="dropbtn">Need ideas?</button>
+          <div class="dropdown-content">
+            <a href="#">From all our database</a>
+            <a href="#">Only from my list</a>
+          </div>
+        </div>
+      </li>
+      <li><a href="#">My collection</a></li>
+      <li><a href="#">My wishlist</a></li>
+      <li><a href="#">Search user</a></li>
+    </ul>
+  </header>
 
   {{{body}}}
 
   <script src="/javascripts/script.js"></script>
 </body>
+
 </html>
