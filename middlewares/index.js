@@ -3,12 +3,12 @@ module.exports = {
         if(req.isAuthenticated()) {
             next();
         } else {
-            res.redirect('/auth/login');
+            res.redirect('/public/edit-profile');
         }
     },
     isLoggedOut: (req, res, next) => {
         if(req.isAuthenticated()) {
-            res.redirect('/auth/private');
+            res.redirect('/');
         } else {
             next();
         }
