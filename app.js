@@ -17,11 +17,14 @@ require('./configs/locals.config')(app);
 require('./configs/session.config')(app);
 require('./configs/passport.config')(app);
 
+
 //Routes
 const index = require("./routes/index");
 const authRoutes = require('./routes/auth.routes')
 
+
 app.use("/", index);
-app.use('/public', authRoutes);
+app.use('/auth', authRoutes);
+
 
 module.exports = app;

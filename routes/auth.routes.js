@@ -1,79 +1,66 @@
 const express = require('express');
-const bcrypt = require('bcryptjs');
-const passport = require('passport')
+const bcrypt = require("bcryptjs");
+const passport = require('passport');
 const router = express.Router();
 const saltRound = 10;
 const { isLoggedOut, isLoggedIn } = require('../middlewares')
+// Require user model
 const User = require('../models/User.model');
 
 //SIGNUP
 router.get('/signup', (req, res, next) => {
-    res.render('public/signup');
-})
+  res.render('auth/signup');
+} )
 
 router.post('/signup', (req, res, next) => {
-    const { username, email, password } = req.body;
+  const { username, email, password } = req.body;
 
-    if(!username || !email || !password ) {
-        res.render('public/signup', { errorMessage: "Username and password are required"})
+  if(!username || !email || !password) {
+    res.render('auth/signup', { errorMessage: "Username and password are required"})
+  }
+
+  User.findOne({username})
+  .then(user => {
+    if (user) {
+      res.render('auth/signup', { errorMessage: "User already exists"})
     }
 
-    User.findOne({username}, {email})
-    .then(user => {
-        if (user) {
-            res.render('public/signup', {errorMessage: "User already exists"})
+    const salt = bcrypt.genSaltSync(saltRound);
+    const hashPassword = bcrypt.hashSync(password, salt);
+
+    User.create({ username, email, password: hashPassword})
+    .then((newUser) => {
+      req.login((newUser), (error) => {
+        if(error){
+          next(error)
         }
-
-        if (user) {
-            res.render('public/signup', {errorMessage: "User already exists"})
-        }
-
-        const salt = bcrypt.genSaltSync(saltRound);
-        const hashPassword = bcrypt.hashSync(password, salt);
-
-        User.create({ username, email, password: hashPassword })
-        .then((newUser) => {
-            console.log(newUser)
-            req.login((newUser), (error) => {
-                if(error){
-                    next(error)
-                }
-                res.redirect('/')
-            })
-        })
-        .catch((error) => {
-            console.log(error);
-            return res.render('public/signup', { errorMessage: "Server error. Try again"})
-        })
-
+        res.redirect("/")
+      })
     })
-})
-
-router.get('/login', (req, res) => {
-    res.render('public/login')
-})
-
-router.post('/login', (req, res) => {
-    const {email, password} = req.body;
-
-    if(!email || !password){
-        res.render('login', { errorMessage : 'Username and password are required.'})
-    }
-
-    User.findOne({email})
-    .then(user => {
-        if(!user) {
-            res.render('login', { errorMessage: 'Incorrect Username or password'})
-        }
-
-        const passwordCorrect = bcrypt.compareSync(password, user.password);
-        if(passwordCorrect) {
-            req.session.currentUser = user;
-            res.redirect("/")
-        } else {
-            res.render('login', { errorMessage: "Incorrect email or password"})
-        }
+    .catch((error) => {
+      console.log(error);
+      return res.render('auth/signup', { errorMessage: "Server error. Try again."})
     })
+  })
 })
+
+//LOGIN
+router.get('/login', isLoggedOut, (req, res) => {
+  res.render('auth/login');
+})
+
+router.post('/login', passport.authenticate("local", {
+  successRedirect: "/public/profile",
+  failureRedirect: "/auth/login",
+  passReqToCallback: true
+}));
+
+//LOGOUT
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/auth/login');
+})
+
+const ensureLogin = require('connect-ensure-login');
 
 module.exports = router;
