@@ -3,30 +3,26 @@ const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const router = express.Router();
 const saltRound = 10;
-const { isLoggedOut, isLoggedIn } = require("../middlewares");
+const { isLoggedOut, isLoggedIn} = require("../middlewares");
 const User = require("../models/User.model");
 
 //SIGNUP
 router.get("/signup", (req, res, next) => {
-  res.render("public/signup");
+  res.render("auth/signup");
 });
 
 router.post("/signup", (req, res, next) => {
   const { username, email, password } = req.body;
 
   if (!username || !email || !password) {
-    res.render("public/signup", {
+    res.render("auth/signup", {
       errorMessage: "Username and password are required",
     });
   }
 
-  User.findOne({ username }, { email }).then((user) => {
+  User.findOne({ email }).then((user) => {
     if (user) {
-      res.render("public/signup", { errorMessage: "User already exists" });
-    }
-
-    if (user) {
-      res.render("public/signup", { errorMessage: "User already exists" });
+      res.render("auth/signup", { errorMessage: "User already exists" });
     }
 
     const salt = bcrypt.genSaltSync(saltRound);
@@ -35,7 +31,7 @@ router.post("/signup", (req, res, next) => {
     User.create({ username, email, password: hashPassword })
       .then((newUser) => {
         console.log(newUser);
-        req.login(newUser, (error) => {
+        req.login((newUser), (error) => {
           if (error) {
             next(error);
           }
@@ -44,7 +40,7 @@ router.post("/signup", (req, res, next) => {
       })
       .catch((error) => {
         console.log(error);
-        return res.render("public/signup", {
+        return res.render("auth/signup", {
           errorMessage: "Server error. Try again",
         });
       });
@@ -52,30 +48,24 @@ router.post("/signup", (req, res, next) => {
 });
 
 //LOGIN
-router.get("/login", (req, res) => {
-  res.render("public/login");
-});
+router.get('/login', (req, res) => {
+  res.render('auth/login');
+})
 
-router.post(
-  "/login",
-  passport.authenticate("local", {
-    successRedirect: "/public/edit-profile.hbs",
-    failureRedirect: "/public/login",
-    passReqToCallback: true,
-  })
-);
+router.post('/login', passport.authenticate("local", {
+  successRedirect: "/auth/profile",
+  failureRedirect: "/auth/login",
+  passReqToCallback: true
+}));
 
 //LOGOUT
 router.get("/logout", (req, res) => {
   console.log("loggedout");
+
   req.logout();
-  res.redirect("public/login");
+  res.redirect("/auth/login");
 });
 
 const ensureLogin = require('connect-ensure-login');
-
-router.get('/', isLoggedIn, (req, res) => {
-    res.render('/', {user: req.user})
-})
 
 module.exports = router;

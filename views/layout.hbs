@@ -13,13 +13,13 @@
   <nav class='nav-bar'>
     <a href='/'>Home</a>
     <ul class='if-no-login'>
-      <li><a href='/public/login'>Log in</a></li>
-      <li><a href='/public/signup'>Sign up</a></li>
+      <li><a href='/auth/login'>Log in</a></li>
+      <li><a href='/auth/signup'>Sign up</a></li>
     </ul>
     <ul class='if-yes-login'>
       <li><a href='#profile'>Profile</a></li>
       <li>
-        <form action='/auth/logout' method="GET">
+        <form action='auth/logout' method="GET">
         </form><button class="dropbtn" type="submit">Logout</button>
         </li>
     </ul>

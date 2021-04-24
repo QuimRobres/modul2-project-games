@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const hbs = require("hbs");
+
 
 module.exports = (app) => {
   app.set("views", path.join(__dirname,'..', "views"));
