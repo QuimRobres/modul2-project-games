@@ -45,13 +45,14 @@ router.post('/signup', (req, res, next) => {
 
 //LOGIN
 router.get('/login', isLoggedOut, (req, res) => {
-  res.render('auth/login');
+  res.render('auth/login', {errorMessage: req.flash("error")[0]});
 })
 
 router.post('/login', passport.authenticate("local", {
   successRedirect: "/public/profile",
   failureRedirect: "/auth/login",
-  passReqToCallback: true
+  passReqToCallback: true,
+  failureFlash: true
 }));
 
 //LOGOUT
