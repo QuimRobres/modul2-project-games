@@ -9,7 +9,12 @@ const User = require('../models/User.model');
 
 //SIGNUP
 router.get('/signup', (req, res, next) => {
-  res.render('auth/signup');
+  if (isLoggedIn) {
+    res.render('public/profile')
+  } else {
+    res.render('auth/signup');
+  }
+  
 } )
 
 router.post('/signup', (req, res, next) => {
