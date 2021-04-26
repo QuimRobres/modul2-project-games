@@ -17,7 +17,7 @@ require('./configs/views.config')(app);
 require('./configs/locals.config')(app);
 require('./configs/session.config')(app);
 require('./configs/passport.config')(app);
-hbs.registerPartials(__dirname + '/partials');
+hbs.registerPartials(__dirname + '/views/partials');
 
 
 //Routes

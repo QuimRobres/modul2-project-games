@@ -12,7 +12,7 @@ const gameSchema = new Schema({
     description: { type: String },
     image_url: { type: String },
     price: { type: Number },
-    rating: { type: Number, min: 0, max: 5}
+    average_user_rating: { type: Number, min: 0, max: 5}
 })
 
 const Game = mongoose.model('games', gameSchema);
