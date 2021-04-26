@@ -12,16 +12,25 @@
 <body>
   <nav class='nav-bar'>
     <a href='/'>Home</a>
-    <ul class='if-no-login'>
-      <li><a href='/auth/login'>Log in</a></li>
-      <li><a href='/auth/signup'>Sign up</a></li>
-    </ul>
-    <ul class='if-yes-login'>
-      <li><a href='/public/profile'>Profile</a></li>
+    {{#if isAuthenticated}}
+    <ul class='yes-login'>
+      <li>
+        <a href='/public/profile'>Profile</a>
+      </li>
       <li>
         <a href='/auth/logout'>Logout</a>
-        </li>
+      </li>
     </ul>
+    {{else}}
+    <ul class='no-login'>
+      <li>
+        <a href='/auth/login'>Log in</a>
+      </li>
+      <li>
+        <a href='/auth/signup'>Sign up</a>
+      </li>
+    </ul>
+    {{/if}}
   </nav>
   <header class='link-bar'>
     <ul>

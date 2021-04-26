@@ -6,6 +6,17 @@ const saltRound = 10;
 const { isLoggedOut, isLoggedIn } = require('../middlewares')
 const User = require('../models/User.model');
 
+const isAuthenticated = async (req) => {
+  try {
+    if (req.session.currentUser) {
+      const user = await User.findById(req.session.currentUser._id);
+      return user;
+    } else {
+      return false;
+    }
+  } catch (error) {}
+};
+
 //SIGNUP
 router.get('/signup', (req, res, next) => {
     res.render('auth/signup');
