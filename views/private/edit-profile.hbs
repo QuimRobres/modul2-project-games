@@ -1,1 +1,19 @@
 <h1>edit profile</h1>
+
+<form action="/private/edit-profile" method="POST">
+    <label for="email">Email:</label>
+    <input required type="text" name="email">
+
+    <label for="username">Username:</label>
+    <input required type="text" name="username">
+
+
+    <label for="password">Password:</label>
+    <input type="password" name="password">
+
+    <button type="submit">Edit</button>
+</form>
+
+{{#if errorMessage}}
+<p>{{errorMessage}}</p>
+{{/if}}

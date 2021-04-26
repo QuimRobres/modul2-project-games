@@ -9,7 +9,7 @@ const gameSchema = new Schema({
     min_playtime: { type: Number },
     max_playtime: { type: Number },
     min_age: { type: Number },
-    description: { type: String },
+    description_review: { type: String },
     image_url: { type: String },
     price: { type: Number },
     average_user_rating: { type: Number, min: 0, max: 5}
