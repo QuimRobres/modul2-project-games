@@ -22,11 +22,14 @@ require('./configs/passport.config')(app);
 const index = require("./routes/index");
 const authRoutes = require('./routes/auth.routes')
 const publicRoutes = require('./routes/public.routes')
+const privateRoutes = require('./routes/private.routes')
 
 
 app.use("/", index);
 app.use('/auth', authRoutes);
 app.use('/public', publicRoutes);
+app.use('/private', privateRoutes);
+
 
 
 module.exports = app;

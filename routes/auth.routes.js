@@ -8,13 +8,8 @@ const User = require('../models/User.model');
 
 //SIGNUP
 router.get('/signup', (req, res, next) => {
-  if (isLoggedIn) {
-    res.render('public/profile')
-  } else {
     res.render('auth/signup');
-  }
-  
-} )
+})
 
 router.post('/signup', (req, res, next) => {
   const { username, email, password } = req.body;
@@ -65,8 +60,6 @@ router.get('/logout', (req, res) => {
   res.redirect('/auth/login');
 })
 
-//EDIT PROFILE
-router.get('/')
 
 const ensureLogin = require('connect-ensure-login');
 
