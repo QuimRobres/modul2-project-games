@@ -4,7 +4,6 @@ const passport = require('passport');
 const router = express.Router();
 const saltRound = 10;
 const { isLoggedOut, isLoggedIn } = require('../middlewares')
-// Require user model
 const User = require('../models/User.model');
 
 //SIGNUP
@@ -65,6 +64,9 @@ router.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/auth/login');
 })
+
+//EDIT PROFILE
+router.get('/')
 
 const ensureLogin = require('connect-ensure-login');
 
