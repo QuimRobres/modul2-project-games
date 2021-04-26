@@ -17,7 +17,7 @@ require('./configs/views.config')(app);
 require('./configs/locals.config')(app);
 require('./configs/session.config')(app);
 require('./configs/passport.config')(app);
-hbs.registerPartials(__dirname + '/views/partials');
+
 
 
 //Routes
@@ -26,6 +26,8 @@ const authRoutes = require('./routes/auth.routes')
 const publicRoutes = require('./routes/public.routes')
 const privateRoutes = require('./routes/private.routes')
 const gamesRoutes = require('./routes/games.routes')
+
+hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
 app.use("/", index);
 app.use('/auth', authRoutes);

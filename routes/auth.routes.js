@@ -18,8 +18,14 @@ const isAuthenticated = async (req) => {
 };
 
 //SIGNUP
-router.get('/signup', (req, res, next) => {
+router.get('/signup', async (req, res, next) => {
+  try {
+    const session = await isAuthenticated(req);
     res.render('auth/signup');
+  } catch(error) {
+    console.log(error);
+  }
+    
 })
 
 router.post('/signup', (req, res, next) => {
