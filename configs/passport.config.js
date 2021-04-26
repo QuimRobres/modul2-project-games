@@ -2,6 +2,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/User.model');
 const bcrypt = require('bcryptjs');
+const flash = require('connect-flash')
 
 module.exports = (app) => {
     passport.serializeUser((user, cb) => {
@@ -13,8 +14,10 @@ module.exports = (app) => {
         .catch((error) => cb(error))
     })
 
-    passport.use(new LocalStrategy ({passReqToCallback: true}, (req, username, password, next) => {
-        User.findOne({username})
+    app.use(flash());
+
+    passport.use(new LocalStrategy ({passReqToCallback: true}, (req, email, password, next) => {
+        User.findOne({email})
         .then(user => {
             if(!user) {
                 return next(null, false, {message: "User or password incorrect"});
