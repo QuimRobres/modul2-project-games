@@ -23,8 +23,10 @@ const index = require("./routes/index");
 const authRoutes = require('./routes/auth.routes')
 
 
+
 app.use("/", index);
 app.use('/auth', authRoutes);
+
 
 
 module.exports = app;
