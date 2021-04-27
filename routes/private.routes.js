@@ -30,6 +30,6 @@ router.post("/edit-profile", isLoggedIn, (req, res, next) => {
 router.post('/profile/:id', isLoggedIn, (req, res, next) => {
   const {id} = req.params;
   User.updateOne({_id: req.user._id}, {$push: {owned_games: id}})
-  res.render('public/profile');
+  res.redirect('/public/profile');
 })
 module.exports = router;
