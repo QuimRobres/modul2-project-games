@@ -1,9 +1,12 @@
 <div class="game-page">
     <img src='{{this.image_url}}' alt='game-image'>
-    <form action='/public/profile' method="POST">
-        <button type='submit'>Add game to list</button>
-    </form>
-    
+
+    <div>
+        <form class="one" action='/private/gameDetail/own' method="POST">
+            <input type="text" name="id" value={{this._id}} style="display: none;">
+            <button class="own" type='submit' >Add game to own list</button>
+            <button class="wish" type='submit' formaction='/private/gameDetail/wish' >Add game to wishlit</button>
+    </div>
 
     <div>
         <h5>{{this.name}}</h5>
@@ -18,10 +21,6 @@
         <p>{{this.min_age}}</p>
     </div>
 </div>
-
-
-
-
 
 
 {{!-- Name Price
