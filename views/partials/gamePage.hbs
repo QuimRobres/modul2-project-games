@@ -1,7 +1,10 @@
 <div class="game-page">
     <img src='{{this.image_url}}' alt='game-image'>
+    <form action='/public/profile' method="POST">
+        <button type='submit'>Add game to list</button>
+    </form>
     
-    <a href="../public/profile">Add game to list</a>
+
     <div>
         <h5>{{this.name}}</h5>
         <p>{{this.description_review}}</p>
