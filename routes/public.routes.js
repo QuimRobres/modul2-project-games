@@ -11,9 +11,9 @@ router.get('/profile', isLoggedIn, (req, res, next) => {
 router.get("/search", (req, res, next) => {
     const { search } = req.query;
     if (search) {
-      Game.find({ name: { $regex: `.*(?i)${search}.*` } })
-        .then((games) =>
-          res.render("games/game-list", { games, search, sessionUser: req.user })
+      User.find({ username: { $regex: `.*(?i)${search}.*` } })
+        .then((user) =>
+          res.render()
         )
         .catch((error) => next(error));
     } else {
