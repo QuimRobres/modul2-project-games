@@ -4,15 +4,11 @@
     <div>
         <form class="one" action='/private/gameDetail/own' method="POST">
             <input type="text" name="id" value={{this._id}} style="display: none;">
-            <button type='submit'>Add game to own list</button>
+            <button class="own" type='submit' >Add game to own list</button>
+            <button class="wish" type='submit' formaction='/private/gameDetail/wish' >Add game to wishlit</button>
     </div>
 
-    <div>
-        <form class="two" action='nlrhnlr' method="POST">
-            <input type="text" name="id" value={{this._id}} style="display: none;">
-            <button type='submit'>Add game to wishlit</button>
-        </form>
-    </div>
+    
 
     <div>
         <h5>{{this.name}}</h5>
