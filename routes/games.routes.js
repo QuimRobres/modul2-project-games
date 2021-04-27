@@ -4,7 +4,7 @@ const { db } = require("../models/Game.model");
 const Game = require("../models/Game.model");
 
 router.get("/searchGameResult/kids", (req, res) => {
-  Game.find({ min_age: { $gte: 5 } })
+  Game.find({ min_age: { $lte: 12 } })
     .then((games) => {
       res.render("public/searchGameResult", { games });
     })
