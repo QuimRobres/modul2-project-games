@@ -1,10 +1,112 @@
 body {
-  padding: 50px;
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+  height: 100%;
+  width: 100%;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+.topbar {
+  width: 100%;
+  height: 7vh;
+  margin: 0 auto;
+}
+
+.topbar a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.nav-bar {
+  background-color: #ff3d00;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.home-btn {
+  height: 85%;
+  margin-left: 20px;
+  margin-top: 4px;
+}
+
+.nav-bar ul {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content:flex-end;
+  align-items: center;
+}
+
+.nav-bar li {
+  list-style: none;
+  text-align: center;
+  padding-left: 20px;
+}
+
+.link-bar {
+  background-color: #212121;
+}
+
+.link-bar ul {
+  display: flex;
+  justify-content: space-around;
+  overflow: hidden;
+  margin:0;
+  align-items: center;
+}
+
+.dropdown {
+  overflow: hidden;
+  float: left;
+}
+
+.dropdown .dropbtn,
+.menubtn a {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 16px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.menubtn {
+list-style: none;
+}
+
+.link-bar a:hover, 
+.dropdown:hover .dropbtn {
+  background-color: #ff3d00;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #484848;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #f9683a;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 .card {
@@ -17,13 +119,14 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  overflow: hidden;
 }
 
 .card img {
   max-height: 250px;
 }
 
-.card div {
+.card-description {
   background-color: #c30000;
   padding-bottom: 10px;
   padding-top: 0px;

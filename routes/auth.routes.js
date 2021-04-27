@@ -6,21 +6,21 @@ const saltRound = 10;
 const { isLoggedOut, isLoggedIn } = require('../middlewares')
 const User = require('../models/User.model');
 
-const isAuthenticated = async (req) => {
+const logged = async (req) => {
   try {
-    if (req.session.currentUser) {
-      const user = await User.findById(req.session.currentUser._id);
+    if (req.user) {
+      const user = await User.findById(req.user._id);
       return user;
     } else {
       return false;
     }
-  } catch (error) {}
+  } catch (error) { }
 };
 
 //SIGNUP
 router.get('/signup', async (req, res, next) => {
   try {
-    const session = await isAuthenticated(req);
+    const session = await logged(req);
     res.render('auth/signup');
   } catch(error) {
     console.log(error);
@@ -75,7 +75,7 @@ router.post('/login', passport.authenticate("local", {
 //LOGOUT
 router.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('/auth/login');
+  res.redirect('/');
 })
 
 

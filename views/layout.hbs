@@ -10,8 +10,8 @@
 </head>
 
 <body>
-  <nav class='nav-bar'>
-    <a href='/'>Home</a>
+  <nav class='nav-bar topbar'>
+    <a href='/'><img src="/images/home-icon.png" alt="home-button" class="home-btn"></a>
     {{#if isAuthenticated}}
     <ul class='yes-login'>
       <li>
@@ -32,9 +32,9 @@
     </ul>
     {{/if}}
   </nav>
-  <header class='link-bar'>
+  <header class='link-bar topbar'>
     <ul>
-      <li>
+      <li class="menubtn">
         <div class="dropdown">
           <button class="dropbtn">Search Game</button>
           <div class="dropdown-content">
@@ -45,7 +45,7 @@
           </div>
         </div>
       </li>
-      <li>
+      <li class="menubtn">
         <div class="dropdown">
           <button class="dropbtn">Need ideas?</button>
           <div class="dropdown-content">
@@ -54,9 +54,9 @@
           </div>
         </div>
       </li>
-      <li><a href="#">My collection</a></li>
-      <li><a href="#">My wishlist</a></li>
-      <li><a href="#">Search user</a></li>
+      <li class="menubtn"><a href="#">My collection</a></li>
+      <li class="menubtn"><a href="#">My wishlist</a></li>
+      <li class="menubtn"><a href="#">Search user</a></li>
     </ul>
   </header>
 
