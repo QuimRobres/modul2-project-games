@@ -32,4 +32,5 @@ router.post('/profile/:id', isLoggedIn, (req, res, next) => {
   User.updateOne({_id: req.user._id}, {$push: {owned_games: id}})
   res.redirect('/public/profile');
 })
+
 module.exports = router;
