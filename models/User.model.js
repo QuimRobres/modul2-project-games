@@ -6,7 +6,7 @@ const userSchema = new Schema ({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true},
     owned_games: [{type: Schema.Types.ObjectId, ref:"Game"}],
-    wishlist: [String]
+    wishlist: [{type: Schema.Types.ObjectId, ref:"Game"}]
 })
 
 const User = mongoose.model("User", userSchema);

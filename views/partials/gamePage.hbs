@@ -1,9 +1,18 @@
 <div class="game-page">
     <img src='{{this.image_url}}' alt='game-image'>
-    <form action='/public/profile' method="POST">
-        <button type='submit'>Add game to list</button>
-    </form>
-    
+
+    <div>
+        <form class="one" action='/private/gameDetail/own' method="POST">
+            <input type="text" name="id" value={{this._id}} style="display: none;">
+            <button type='submit'>Add game to own list</button>
+    </div>
+
+    <div>
+        <form class="two" action='nlrhnlr' method="POST">
+            <input type="text" name="id" value={{this._id}} style="display: none;">
+            <button type='submit'>Add game to wishlit</button>
+        </form>
+    </div>
 
     <div>
         <h5>{{this.name}}</h5>

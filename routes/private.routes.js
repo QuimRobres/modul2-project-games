@@ -27,10 +27,21 @@ router.post("/edit-profile", isLoggedIn, (req, res, next) => {
 })
 
 //ADD GAME TO OWNED LIST
-router.post('/profile/:id', isLoggedIn, (req, res, next) => {
-  const {id} = req.params;
-  User.updateOne({_id: req.user._id}, {$push: {owned_games: id}})
-  res.redirect('/public/profile');
+router.post('/gameDetail/own', isLoggedIn, (req, res, next) => {
+  User.updateOne({_id: req.user._id}, {$push: {owned_games: req.body.id}})
+  .then(() => {
+    res.redirect('/public/profile');
+  })
+  .catch((error) => console.error(error))
+})
+
+//ADD GAME TO WISHLIST
+router.post('/gameDetail/wish', isLoggedIn, (req, res, next) => {
+  User.updateOne({_id: req.user._id}, {$push: {wishlist: req.body.id}})
+  .then(() => {
+    res.redirect('/public/profile');
+  })
+  .catch((error) => console.error(error))
 })
 
 module.exports = router;
