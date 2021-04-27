@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const isAuthenticated = async (req) => {
+const logged = async (req) => {
   try {
     if (req.session.currentUser) {
       const user = await User.findById(req.session.currentUser._id);
@@ -15,7 +15,7 @@ const isAuthenticated = async (req) => {
 /* GET home page */
 router.get("/", async (req, res, next) => {
   try {
-    const session = await isAuthenticated(req);
+    const session = await logged(req);
     res.render("index"), { session };
   } catch (error) {
     console.log(error);
