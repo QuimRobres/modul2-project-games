@@ -17,4 +17,9 @@ router.post("/edit-profile", isLoggedIn, (req, res, next) => {
         .catch((error) => console.error(error))
 })
 
+//ADD GAME TO OWNED LIST
+router.post('/profile', isLoggedIn, (req, res, next) => {
+  
+  res.render('public/profile', { user: req.user});
+})
 module.exports = router;

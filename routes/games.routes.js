@@ -29,8 +29,17 @@ router.get("/searchGameResult/random", (req, res) => {
   });
 
 
+router.get("/gameDetail/:id", (req, res) => {
+    const {id} = req.params;
+    Game.findById(id) 
+    .then((game) => {
+        res.render("public/gameDetail", {game})
+    })
+    .catch((error) => console.error(error))
+})
 
 
-router.get('/searchGameResult/')
+
+
 
 module.exports = router;
