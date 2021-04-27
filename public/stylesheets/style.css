@@ -19,11 +19,8 @@ a {
   justify-content: flex-start;
 }
 
-.card-img {
-  max-width: 250px;
-  max-height: 50%;
-  margin: 0px;
-  padding: 0px;
+.card img {
+  max-height: 250px;
 }
 
 .card div {
