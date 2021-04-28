@@ -38,11 +38,14 @@ router.get("/searchGameResult/rate", (req, res) => {
 //SEARCH A RANDOM GAME
 router.get("/searchGameResult/random", (req, res) => {
   Game.aggregate([{ $sample: { size: 1 } }])
-    .then((games) => {
-      res.render("public/searchGameResult", { games, isAuthenticated: req.user });
+    .then((game) => {
+      console.log(game[0])
+      game = game[0]
+      res.render("public/gameDetail", { game, isAuthenticated: req.user });
     })
     .catch((error) => console.error(error));
 });
+
 
 
 //SHOW GAME DETAILS
@@ -50,12 +53,11 @@ router.get("/gameDetail/:id", (req, res) => {
   const { id } = req.params;
   Game.findById(id)
     .then((game) => {
-
+     
       res.render("public/gameDetail", { game, isAuthenticated: req.user })
     })
     .catch((error) => console.error(error))
 })
-
 
 
 module.exports = router;
