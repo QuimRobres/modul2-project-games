@@ -5,7 +5,7 @@ const Game = require("../models/Game.model");
 const User = require("../models/User.model");
 
 router.get("/profile", isLoggedIn, (req, res, next) => {
-  res.render("public/profile", { user: req.user, isAuthenticated: req.user });
+  res.render("public/profile", { user: req.user, isAuthenticated: req.user, owner: true });
 });
 
 //SEARCH FOR USERS

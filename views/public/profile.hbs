@@ -1,16 +1,9 @@
 <h1>Profile</h1>
 
+<h2>{{user.username}}'s Profile</h2>
+<a href="#">{{user.username}}'s collection</a>
+<a href="#">{{user.username}}'s wishlist</a>
 {{#if owner}}
-<h2>Welcome to your profile, {{users.username}}!</h2>
-
 <a href="/private/edit-profile">Edit your Profile</a>
-<a href='#'>Check your collection</a>
-<a href='#'>Check your wishlist</a>
-
-{{else}}
-
-<h2>{{this.username}}'s Profile</h2>
-<a href="#">{{this.username}}'s collection</a>
-<a href="#">{{this.username}}'s wishlist</a>
 
 {{/if}}
