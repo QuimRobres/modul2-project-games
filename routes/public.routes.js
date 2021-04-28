@@ -1,3 +1,4 @@
+const { Router } = require("express");
 const express = require("express");
 const { isLoggedIn } = require("../middlewares");
 const router = express.Router();
@@ -8,6 +9,7 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
   res.render("public/profile", { user: req.user, isAuthenticated: req.user, owner: true });
 });
 
+//ACCESS
 router.get("/profile/:id", isLoggedIn, (req, res, next) => {
   const {id} = req.params;
   User.findById(id)
@@ -15,7 +17,6 @@ router.get("/profile/:id", isLoggedIn, (req, res, next) => {
     res.render("public/profile", { user, isAuthenticated: req.user, owner: false });
   })
 });
-
 
 //SEARCH FOR USERS
 router.get("/search", (req, res, next) => {
@@ -45,10 +46,32 @@ router.get("/searchGame", (req, res, next) => {
   }
 });
 
+//SHOW OWNED LIST
+router.get("/ownedGames", (req, res) => {
+  const {owned_games} = req.user;
+  console.log({owned_games})
+  Game.find({})
+  .then((games) => {
+    res.render("public/ownedGames", {games, isAuthenticated: req.user })
+  })
+})
+
+//SHOW WISHLIST
+router.get("/wishlist", (req, res) => {
+  const {owned_games} = req.user;
+  console.log(owned_games)
+  
+  .then((games) => {
+    res.render("public/wishlist", {games, isAuthenticated: req.user })
+  })
+})
+
+//SEARCH FOR GAMES VIEW
 router.get("/searchGameList", (req, res, next) => {
   res.render("public/searchGameList", { isAuthenticated: req.user });
 });
 
+//SEARCH FOR USERS VIEW
 router.get("/searchUserResult", (req, res, next) => {
   res.render("public/searchUserResult", { isAuthenticated: req.user });
 });
