@@ -10,7 +10,10 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
 
 router.get("/profile/:id", isLoggedIn, (req, res, next) => {
   const {id} = req.params;
-  res.render("public/profile", { user: req.user, isAuthenticated: req.user, owner: true });
+  User.findById(id)
+  .then((user) => {
+    res.render("public/profile", { user, isAuthenticated: req.user, owner: false });
+  })
 });
 
 
