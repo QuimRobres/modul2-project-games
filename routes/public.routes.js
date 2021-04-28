@@ -16,6 +16,7 @@ router.get("/search", (req, res, next) => {
     const { search } = req.query;
     User.findOne({ username: { $regex: `.*(?i)${search}.*` } })
       .then((users) => {
+        console.log(users)
         mappedUsers = users;
         res.render("public/searchUserResult", { users: mappedUsers, search });
       })
