@@ -14,10 +14,21 @@ router.get("/searchGameResult/kids", (req, res) => {
     .catch ((error) => console.error(error));
 });
 
+function compare( a, b ) {
+  if ( a.average_user_rating > b.average_user_rating ){
+    return -1;
+  }
+  if ( a.average_user_rating < b.average_user_rating ){
+    return 1;
+  }
+  return 0;
+}
+
 //SEARCH GAME BY RATE
 router.get("/searchGameResult/rate", (req, res) => {
   Game.find({ average_user_rating: { $gte: 3 } })
     .then((games) => {
+      games.sort(compare);
       res.render("public/searchGameResult", { games, isAuthenticated: req.user });
     })
     .catch((error) => console.error(error));
