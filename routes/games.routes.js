@@ -2,7 +2,7 @@ const express = require("express");
 const router = require(".");
 const { db } = require("../models/Game.model");
 const Game = require("../models/Game.model");
-const User = require('../models/User.model')
+const User = require('../models/User.model');
 
 
 //SEARCH GAME FOR KIDS
@@ -28,6 +28,7 @@ function compare( a, b ) {
 router.get("/searchGameResult/rate", (req, res) => {
   Game.find({ average_user_rating: { $gte: 3 } })
     .then((games) => {
+      console.log(games)
       games.sort(compare);
       res.render("public/searchGameResult", { games, isAuthenticated: req.user });
     })
@@ -39,7 +40,6 @@ router.get("/searchGameResult/rate", (req, res) => {
 router.get("/searchGameResult/random", (req, res) => {
   Game.aggregate([{ $sample: { size: 1 } }])
     .then((game) => {
-      console.log(game[0])
       game = game[0]
       res.render("public/gameDetail", { game, isAuthenticated: req.user });
     })
@@ -47,17 +47,17 @@ router.get("/searchGameResult/random", (req, res) => {
 });
 
 
-
 //SHOW GAME DETAILS
 router.get("/gameDetail/:id", (req, res) => {
   const { id } = req.params;
   Game.findById(id)
     .then((game) => {
-     
+
       res.render("public/gameDetail", { game, isAuthenticated: req.user })
     })
     .catch((error) => console.error(error))
 })
+
 
 
 module.exports = router;
