@@ -1,0 +1,19 @@
+<div class="search-user">
+    <form action="/" method="GET">
+    <input type="number" name="min_playtime">
+    <button type='submit'>Search</button>
+    </form>
+</div>
+<ul>
+    <li><a href="/public/searchGameResult/duration/5/30">5min - 30min</a></li>
+    <li><a href="/public/searchGameResult/duration30to60">30min - 60min</a></li>
+    <li><a href="/public/searchGameResult/duration30to90">30min - 90min</a></li>
+    <li><a href="/public/searchGameResult/duration90orMore">More than 90min</a></li>
+</ul>
+
+{{#if games}}
+    {{#each games}}
+    {{> gameCard}}
+    {{/each}}
+{{/if}}
+
