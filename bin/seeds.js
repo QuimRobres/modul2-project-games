@@ -6,9 +6,6 @@ mongoose
   .connect('mongodb://localhost/project2-boardgame-app', {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
-    Game.forEach((game) => {
-      game.average_user_rating = game.average_user_rating.toFixed(2);
-    })
     return Game.insertMany(games)
   })
   .then((games) => {

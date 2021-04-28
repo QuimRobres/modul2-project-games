@@ -44,4 +44,15 @@ router.post('/gameDetail/wish', isLoggedIn, (req, res, next) => {
   .catch((error) => console.error(error))
 })
 
+//RANDOM GAME FROM OWN LIST
+
+router.get("/searchGameResult/ownrandom", isLoggedIn, (req, res) => {
+  const {owned_games} = req.user.owned_games;
+  User.aggregate([{$match: {owned_games: {_id}}},{$sample: {size: 1 } }])
+    .then((games) => {
+      res.render("public/searchGameResult", { games, isAuthenticated: req.user });
+    })
+    .catch((error) => console.error(error));
+});
+
 module.exports = router;
