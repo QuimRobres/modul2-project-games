@@ -5,17 +5,7 @@
     You don't know what to play? Try our randomizer function and let us choose a game for you.
 </p>
 
-<div class="search-game">
-    <form action="public/searchGame" method="GET">
-    <input type="text" name="search" placeholder="Game search..." value="{{search}}">
-    <button type='submit'>Search</button>
-    </form>
-</div>
-
 <div id="index-menu">
-    <art>
-        {{> searchForm}}
-    </art>
     <art>
         <h3>Find a game</h3>
         <img src='/images/search-icon.png' alt='search-logo'>
@@ -26,7 +16,7 @@
             <img src='/images/popular-icon.png' alt='popular-logo'>
         </art>
     </a>
-    <a href='/public/searchGameResult/random'>
+    <a href='/public/gameDetail/random'>
          <art>
         <h3>Random game</h3>
         <img src='/images/random-icon.png' alt='random-logo'>

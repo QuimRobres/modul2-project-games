@@ -14,7 +14,7 @@ router.get("/search", (req, res, next) => {
   if (search) {
     User.find({ username: { $regex: `.*(?i)${search}.*` } })
       .then((users) => {
-        res.render("public/searchUserResult", { users, search });
+        res.render("public/searchUserResult", { users, search, isAuthenticated: req.user });
       })
       .catch((error) => next(error));
   } else {
@@ -28,12 +28,16 @@ router.get("/searchGame", (req, res, next) => {
   if (search) {
     Game.find({ name: { $regex: `.*(?i)${search}.*` } })
       .then((games) => {
-        res.render("public/searchGameResult", { games, search });
+        res.render("public/searchGameResult", { games , search, isAuthenticated: req.user });
       })
       .catch((error) => next(error));
   } else {
     res.redirect("/");
   }
+});
+
+router.get("/searchUserResult", (req, res, next) => {
+  res.render("public/searchUserResult", { isAuthenticated: req.user });
 });
 
 module.exports = router;
