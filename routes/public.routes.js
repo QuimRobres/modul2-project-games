@@ -1,24 +1,28 @@
-const express = require('express');
-const { isLoggedIn } = require('../middlewares');
+const express = require("express");
+const { isLoggedIn } = require("../middlewares");
 const router = express.Router();
 const Game = require("../models/Game.model");
+const User = require("../models/User.model");
 
-router.get('/profile', isLoggedIn, (req, res, next) => {
-        res.render('public/profile', { user: req.user, isAuthenticated:req.user });
-    });
+router.get("/profile", isLoggedIn, (req, res, next) => {
+  res.render("public/profile", { user: req.user, isAuthenticated: req.user });
+});
 
 //SEARCH FOR USERS
 router.get("/search", (req, res, next) => {
+  const { search } = req.query;
+  let mappedUsers = [];
+  if (search) {
     const { search } = req.query;
-    if (search) {
-      User.find({ username: { $regex: `.*(?i)${search}.*` } })
-        .then((user) =>
-          res.render()
-        )
-        .catch((error) => next(error));
-    } else {
-      res.redirect("/games");
-    }
-  });
-  
+    User.findOne({ username: { $regex: `.*(?i)${search}.*` } })
+      .then((users) => {
+        mappedUsers = users;
+        res.render("public/searchUserResult", { users: mappedUsers, search });
+      })
+      .catch((error) => next(error));
+  } else {
+    res.redirect("/");
+  }
+});
+
 module.exports = router;
