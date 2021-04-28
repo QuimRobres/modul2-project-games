@@ -2,9 +2,11 @@
     <img src='{{this.image_url}}' alt='game-image'>
 
     <div>
-        <form class="one" action='/private/gameDetail/own' method="POST">
+        <form action='/private/gameDetail/own' method="POST">
+            <input type="text" name="id" value={{this._id}} style="display: none;">
             <button class="own" type='submit' >Add game to own list</button>
             <button class="wish" type='submit' formaction='/private/gameDetail/wish' >Add game to wishlit</button>
+        </form>
     </div>
 
     <div>

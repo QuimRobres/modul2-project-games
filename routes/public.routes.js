@@ -11,14 +11,10 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
 //SEARCH FOR USERS
 router.get("/search", (req, res, next) => {
   const { search } = req.query;
-  let mappedUsers = [];
   if (search) {
-    const { search } = req.query;
     User.find({ username: { $regex: `.*(?i)${search}.*` } })
       .then((users) => {
-        console.log(users)
-        mappedUsers = users;
-        res.render("public/searchUserResult", { users: mappedUsers, search });
+        res.render("public/searchUserResult", { users, search });
       })
       .catch((error) => next(error));
   } else {
@@ -29,14 +25,10 @@ router.get("/search", (req, res, next) => {
 //SEARCH FOR GAMES
 router.get("/searchGame", (req, res, next) => {
   const { search } = req.query;
-  let mappedGames = [];
   if (search) {
-    const { search } = req.query;
     Game.find({ name: { $regex: `.*(?i)${search}.*` } })
       .then((games) => {
-        console.log(games)
-        mappedGames = games;
-        res.render("public/searchGameResult", { games: mappedGames, search });
+        res.render("public/searchGameResult", { games, search });
       })
       .catch((error) => next(error));
   } else {
