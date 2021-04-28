@@ -1,0 +1,14 @@
+<h1>Game search</h1>
+
+<div class="search-game">
+    <form action="searchGame" method="GET">
+        <input type="text" name="search" placeholder="Game search...">
+        <button type='submit'>Search</button>
+    </form>
+</div>
+
+<div class='searchpage'>
+    {{#each games}}
+    {{> gameCard}}
+    {{/each}}
+</div>
