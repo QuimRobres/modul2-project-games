@@ -26,4 +26,22 @@ router.get("/search", (req, res, next) => {
   }
 });
 
+//SEARCH FOR GAMES
+router.get("/searchGame", (req, res, next) => {
+  const { search } = req.query;
+  let mappedGames = [];
+  if (search) {
+    const { search } = req.query;
+    Game.find({ name: { $regex: `.*(?i)${search}.*` } })
+      .then((games) => {
+        console.log(games)
+        mappedGames = games;
+        res.render("public/searchGameResult", { games: mappedGames, search });
+      })
+      .catch((error) => next(error));
+  } else {
+    res.redirect("/");
+  }
+});
+
 module.exports = router;
