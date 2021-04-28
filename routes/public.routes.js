@@ -28,12 +28,16 @@ router.get("/searchGame", (req, res, next) => {
   if (search) {
     Game.find({ name: { $regex: `.*(?i)${search}.*` } })
       .then((games) => {
-        res.render("public/searchGameResult", { games , search, isAuthenticated: req.user });
+        res.render("public/searchGameList", { games , search, isAuthenticated: req.user });
       })
       .catch((error) => next(error));
   } else {
     res.redirect("/");
   }
+});
+
+router.get("/searchGameList", (req, res, next) => {
+  res.render("public/searchGameList", { isAuthenticated: req.user });
 });
 
 router.get("/searchUserResult", (req, res, next) => {
