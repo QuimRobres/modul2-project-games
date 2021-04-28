@@ -8,6 +8,10 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
   res.render("public/profile", { user: req.user, isAuthenticated: req.user, owner: true });
 });
 
+router.get("/profile/:id", isLoggedIn, (req, res, next) => {
+  const {id} = req.params;
+  res.render("public/profile", { user: req.user, isAuthenticated: req.user, owner: true });
+});
 
 
 //SEARCH FOR USERS
