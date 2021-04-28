@@ -46,15 +46,14 @@ router.post('/gameDetail/wish', isLoggedIn, (req, res, next) => {
 
 //RANDOM GAME FROM OWN LIST
 
-router.get("/searchGameResult/ownrandom", isLoggedIn, (req, res) => {
+router.get("/gameDetail/ownrandom", isLoggedIn, (req, res) => {
   const {owned_games} = req.user;
   console.log(owned_games)
   let gameId = owned_games[Math.floor(Math.random(owned_games) * owned_games.length)]
   console.log("game ID",gameId)
   Game.findById(gameId)
-    .then((games) => {
-      console.log(games)
-      res.render("public/searchGameResult", { games, isAuthenticated: req.user });
+    .then((game) => {
+      res.render("public/gameDetail", { game, isAuthenticated: req.user });
     })
     .catch((error) => console.error(error));
 });
