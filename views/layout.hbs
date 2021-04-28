@@ -12,6 +12,12 @@
 <body>
   <nav class='nav-bar topbar'>
     <a href='/'><img src="/images/home-icon.png" alt="home-button" class="home-btn"></a>
+    <div class="search-game">
+      <form action="public/searchGame" method="GET">
+        <input type="text" name="search" placeholder="Game search...">
+        <button type='submit'>Search</button>
+      </form>
+    </div>
     {{#if isAuthenticated}}
     <ul class='yes-login'>
       <li>
@@ -39,7 +45,7 @@
           <button class="dropbtn">Search Game</button>
           <div class="dropdown-content">
             <a href="/public/searchGameResult/rate">Popular games</a>
-            <a href="/public/searchGameResult/kids" >Play with kids</a>
+            <a href="/public/searchGameResult/kids">Play with kids</a>
             <a href="/public">Search by number of players</a>
             <a href="#">Search by game duration</a>
           </div>
@@ -56,7 +62,7 @@
       </li>
       <li class="menubtn"><a href="#">My collection</a></li>
       <li class="menubtn"><a href="#">My wishlist</a></li>
-      <li class="menubtn"><a href="#">Search user</a></li>
+      <li class="menubtn"><a href="/public/searchUserResult">Search user</a></li>
     </ul>
   </header>
 

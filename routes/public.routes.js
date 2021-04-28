@@ -18,7 +18,7 @@ router.get("/search", (req, res, next) => {
       .then((users) => {
         console.log(users)
         mappedUsers = users;
-        res.render("public/searchUserResult", { users: mappedUsers, search });
+        res.render("public/searchUserResult", { users: mappedUsers, search , isAuthenticated: req.user});
       })
       .catch((error) => next(error));
   } else {
@@ -29,19 +29,19 @@ router.get("/search", (req, res, next) => {
 //SEARCH FOR GAMES
 router.get("/searchGame", (req, res, next) => {
   const { search } = req.query;
-  let mappedGames = [];
   if (search) {
-    const { search } = req.query;
     Game.find({ name: { $regex: `.*(?i)${search}.*` } })
       .then((games) => {
-        console.log(games)
-        mappedGames = games;
-        res.render("public/searchGameResult", { games: mappedGames, search });
+        res.render("public/searchGameResult", { games , search, isAuthenticated: req.user });
       })
       .catch((error) => next(error));
   } else {
     res.redirect("/");
   }
+});
+
+router.get("/searchUserResult", (req, res, next) => {
+  res.render("public/searchUserResult", { isAuthenticated: req.user });
 });
 
 module.exports = router;

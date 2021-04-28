@@ -52,7 +52,6 @@ router.get("/gameDetail/:id", (req, res) => {
   const { id } = req.params;
   Game.findById(id)
     .then((game) => {
-
       res.render("public/gameDetail", { game, isAuthenticated: req.user })
     })
     .catch((error) => console.error(error))
