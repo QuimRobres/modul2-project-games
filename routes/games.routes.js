@@ -32,11 +32,32 @@ router.get("/searchGameResult/rate", (req, res) => {
     })
     .catch((error) => console.error(error));
 });
-
-//SEARCH GAME BY TIME
-router.get("/searchGameResult/numOfPLayers2", (req, res) => {
-  
+//Searh by plars main view
+router.get("/searchGamePlayers", (req, res) => {
+  res.render("public/searchGamePlayers")
 })
+//SEARCH GAME TWO PLayers
+router.get("/searchGameResult/numOfPLayers2", (req, res) => {
+  Game.find({max_players : "2"})
+  .then((games) => {
+    res.render("public/searchGamePlayers", { games, isAuthenticated: req.user });
+  })
+})
+//SEARCH GAME FOUR PLayers
+router.get("/searchGameResult/numOfPLayers4", (req, res) => {
+  Game.find({max_players : "4"})
+  .then((games) => {
+    res.render("public/searchGamePlayers", { games, isAuthenticated: req.user });
+  })
+})
+//SEARCH GAME SIX PLayers
+router.get("/searchGameResult/numOfPLayers6", (req, res) => {
+  Game.find({max_players : "6"})
+  .then((games) => {
+    res.render("public/searchGamePlayers", { games, isAuthenticated: req.user });
+  })
+})
+
 
 //SEARCH A RANDOM GAME
 router.get("/searchGameResult/random", (req, res) => {
