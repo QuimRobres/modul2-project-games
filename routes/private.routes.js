@@ -8,11 +8,11 @@ const User = require('../models/User.model');
 const Game = require('../models/Game.model')
 
 
-//EDIT PROFILE
+//GET EDIT PROFILE PAGE
 router.get("/edit-profile", isLoggedIn, (req, res, next) => {
   res.render("private/edit-profile");
 });
-
+//EDIT PROFILE
 router.post("/edit-profile", isLoggedIn, (req, res, next) => {
     const {id} = req.params;
     const {username, email, password} = req.body;
@@ -35,9 +35,27 @@ router.post('/gameDetail/own', isLoggedIn, (req, res, next) => {
   .catch((error) => console.error(error))
 })
 
+//REMOVE GAME FROM OWNED LIST
+router.post('/gameDetail/ownOut', isLoggedIn, (req, res, next) => {
+  User.updateOne({_id: req.user._id}, {$pull: {owned_games: req.body.id}})
+  .then(() => {
+    res.redirect('/public/profile');
+  })
+  .catch((error) => console.error(error))
+})
+
 //ADD GAME TO WISHLIST
 router.post('/gameDetail/wish', isLoggedIn, (req, res, next) => {
   User.updateOne({_id: req.user._id}, {$push: {wishlist: req.body.id}})
+  .then(() => {
+    res.redirect('/public/profile');
+  })
+  .catch((error) => console.error(error))
+})
+
+//REMOVE GAME FROM WISHLIST
+router.post('/gameDetail/wishOut', isLoggedIn, (req, res, next) => {
+  User.updateOne({_id: req.user._id}, {$pull: {owned_games: req.body.id}})
   .then(() => {
     res.redirect('/public/profile');
   })

@@ -1,0 +1,24 @@
+<div class="game-page">
+    <img src='{{this.image_url}}' alt='game-image'>
+
+    <div>
+        <form action='/private/gameDetail/wishOut' method="POST">
+            <input type="text" name="id" value={{this._id}} style="display: none;">
+            <button class="own" type='submit' >Remove from Wishlist</button>
+            <button class="wish" type='submit' formaction='/private//gameDetail/ownOut' >Remove game from own list</button>
+        </form>
+    </div>
+
+    <div>
+        <h5>{{this.name}}</h5>
+        <p>{{this.description_review}}</p>
+        <p>Players: {{this.min_players}} - {{this.max_players}}</p>
+        <p>Playtime: {{this.min_playtime}} - {{this.max_playtime}} mins</p>
+        <p>Rating: {{this.average_user_rating}}</p>
+        <p>{{this.price}}</p>
+    </div>
+    <div>
+        <p>{{this.year.published}}</p>
+        <p>{{this.min_age}}</p>
+    </div>
+</div>

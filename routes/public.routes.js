@@ -49,23 +49,30 @@ router.get("/searchGame", (req, res, next) => {
 //SHOW OWNED LIST
 router.get("/ownedGames", (req, res) => {
   const {owned_games} = req.user;
-
-  console.log(owned_games)
-  User.find({})
-  .populate(owned_games)
-  .then((games) => {
-    console.log(games)
-    res.render("public/ownedGames", {games, isAuthenticated: req.user })
+  let arrGames = owned_games.map((gameId) => {
+   return Game.findById(gameId).then((results) => {
+     gameId = results 
+     return results
+   }) 
+  })
+  console.log("GAMES ARRAY", arrGames)
+  Promise.all(arrGames).then((results) => {
+    res.render("public/ownedGames", {results, isAuthenticated: req.user})
   })
 })
 
 //SHOW WISHLIST
 router.get("/wishlist", (req, res) => {
-  const {owned_games} = req.user;
-  console.log(owned_games)
-  
-  .then((games) => {
-    res.render("public/wishlist", {games, isAuthenticated: req.user })
+  const {wishlist} = req.user;
+  let arrGames = wishlist.map((gameId) => {
+   return Game.findById(gameId).then((results) => {
+     gameId = results
+     return results
+   }) 
+  })
+  console.log("GAMES ARRAY", arrGames)
+  Promise.all(arrGames).then((results) => {
+    res.render("public/ownedGames", {results, isAuthenticated: req.user})
   })
 })
 
