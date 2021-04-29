@@ -61,7 +61,7 @@ router.get("/ownedGames", isLoggedIn, (req, res) => {
 })
 
 //SHOW WISHLIST
-router.get("/wishlist", (req, res) => {
+router.get("/wishlist", isLoggedIn, (req, res) => {
   const {wishlist} = req.user;
   let arrGames = wishlist.map((gameId) => {
    return Game.findById(gameId).then((results) => {
