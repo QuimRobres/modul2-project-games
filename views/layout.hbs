@@ -11,11 +11,11 @@
 
 <body>
   <nav class='nav-bar topbar'>
-    <a href='/'><img src="/images/home-icon.png" alt="home-button" class="home-btn"></a>
+    <a href='/'><img src="/images/ork-icon.png" alt="home-button" class="home-btn"></a>
     <div class="search-game">
       <form action="/public/searchGame" method="GET">
-        <input type="text" name="search" placeholder="Game search...">
-        <button type='submit'>Search</button>
+        <input type="text" name="search" placeholder="Game search..." class="search-bar">
+        <button type='submit' class='searchbar-btn'>Search</button>
       </form>
     </div>
     {{#if isAuthenticated}}

@@ -1,34 +1,44 @@
-<h1>Welcome to {{title}}!</h1>
-
-<p>{{title}} is a database of tabletop games. <br>
-    Search for any game on our search function, create your own wishlist and add games to your collection.<br>
-    You don't know what to play? Try our randomizer function and let us choose a game for you.
-</p>
-
-<div id="index-menu">
-    <a href="/public/searchGameList">
-    <art>
-        <h3>Find a game</h3>
-        <img src='/images/search-icon.png' alt='search-logo'>
-    </art>
-    </a>
-    <a href="/public/searchGameResult/rate">
+<div id='index'>
+    <div class='index-header'>
+        <img src='/images/ork-icon.png' alt='ork-logo' class='logo'>
         <art>
-            <h3>Popular games</h3>
-            <img src='/images/popular-icon.png' alt='popular-logo'>
+            <h1>Welcome to<br>{{title}}!</h1>
+
+            <p>{{title}} is a database of tabletop games. <br>
+                Search for any game on our search function, create your own wishlist and add games to your
+                collection.<br>
+                You don't know what to play? Try our randomizer function and let us choose a game for you.
+            </p>
         </art>
-    </a>
-    <a href='/public/gameDetail/random'>
-         <art>
-        <h3>Random game</h3>
-        <img src='/images/random-icon.png' alt='random-logo'>
-    </art>
-    </a>
-   
-    <a href="/public/searchGameResult/kids">
-        <art>
-            <h3>Games to play with kids</h3>
-            <img src='/images/family-icon.png' alt='family-logo'>
-        </art>
-    </a>
+    </div>
+
+    <div class="index-menu">
+            <a href="/public/searchGameList">
+                <div class='index-btn-content'>
+                    <h3>Find a game</h3>
+                    <img src='/images/search-icon.png' alt='search-logo'>
+                </div>
+            </a>
+
+            <a href="/public/searchGameResult/rate">
+            <div class='index-btn-content'>
+                <h3>Popular games</h3>
+                <img src='/images/popular-icon.png' alt='popular-logo'>
+            </div>
+        </a>
+
+        <a href='/public/gameDetail/random'>
+            <div class='index-btn-content'>
+                <h3>Random game</h3>
+                <img src='/images/random-icon.png' alt='random-logo'>
+            </div>
+        </a>
+
+        <a href="/public/searchGameResult/kids">
+            <div class='index-btn-content'>
+                <h3>Games to play with kids</h3>
+                <img src='/images/family-icon.png' alt='family-logo'>
+            </div>
+        </a>
+    </div>
 </div>
