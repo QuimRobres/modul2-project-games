@@ -34,7 +34,7 @@ router.get("/searchGameResult/rate", (req, res) => {
 });
 
 
-//Searh by plars main view
+//SHOW SEARCH USER PAGE
 router.get("/searchGamePlayers", (req, res) => {
   res.render("public/searchGamePlayers")
 })
