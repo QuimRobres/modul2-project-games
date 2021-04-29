@@ -72,7 +72,7 @@ router.get("/wishlist", (req, res) => {
   })
   console.log("GAMES ARRAY", arrGames)
   Promise.all(arrGames).then((results) => {
-    res.render("public/wishlist", {results, isAuthenticated: req.user})
+    res.render("public/ownedGames", {results, isAuthenticated: req.user})
   })
 })
 
