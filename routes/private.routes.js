@@ -46,8 +46,6 @@ router.post('/gameDetail/ownOut', isLoggedIn, (req, res, next) => {
 
 //ADD GAME TO WISHLIST
 router.post('/gameDetail/wish', isLoggedIn, (req, res, next) => {
-  const {id}= req.body;
-  const {_id}
   User.updateOne({_id: req.user._id}, {$push: {wishlist: req.body.id}})
   .then(() => {
     res.redirect('/public/profile');
