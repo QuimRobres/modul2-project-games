@@ -55,7 +55,7 @@ router.post('/gameDetail/wish', isLoggedIn, (req, res, next) => {
 
 //REMOVE GAME FROM WISHLIST
 router.post('/gameDetail/wishOut', isLoggedIn, (req, res, next) => {
-  User.updateOne({_id: req.user._id}, {$pull: {owned_games: req.body.id}})
+  User.updateOne({_id: req.user._id}, {$pull: {wishlist : req.body.id}})
   .then(() => {
     res.redirect('/public/profile');
   })
