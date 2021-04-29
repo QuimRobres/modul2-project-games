@@ -74,6 +74,22 @@ router.get("/wishlist", isLoggedIn, (req, res) => {
   })
 })
 
+router.get("/wishlist/:id", isLoggedIn, (req, res) => {
+  const {wishlist} = req.user;
+  const {id} = req.params;
+  
+  let arrGames = wishlist.map((gameId) => {
+   return Game.findById(gameId).then((results) => {
+     gameId = results
+     return results
+   }) 
+  })
+  User.findById(id)
+  Promise.all(arrGames).then((results) => {
+    res.render("public/wishlist", {results, isAuthenticated: req.user})
+  })
+})
+
 //SEARCH FOR GAMES VIEW
 router.get("/searchGameList", (req, res, next) => {
   res.render("public/searchGameList", { isAuthenticated: req.user });
