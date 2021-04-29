@@ -3,7 +3,7 @@ const Game = require('../models/Game.model');
 const mongoose = require("mongoose");
 
 mongoose
-  .connect('mongodb://localhost/project2-boardgame-app', {useNewUrlParser: true})
+  .connect(process.env.DBURL, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
     games.forEach(game => {
