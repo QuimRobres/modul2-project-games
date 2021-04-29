@@ -73,18 +73,17 @@ router.get("/wishlist", isLoggedIn, (req, res) => {
     res.render("public/wishlist", {results, isAuthenticated: req.user})
   })
 })
-
+//toher wish
 router.get("/wishlist/:id", isLoggedIn, (req, res) => {
   const {wishlist} = req.user;
   const {id} = req.params;
-  
+  User.findById(id)
   let arrGames = wishlist.map((gameId) => {
    return Game.findById(gameId).then((results) => {
      gameId = results
      return results
    }) 
   })
-  User.findById(id)
   Promise.all(arrGames).then((results) => {
     res.render("public/wishlist", {results, isAuthenticated: req.user})
   })
