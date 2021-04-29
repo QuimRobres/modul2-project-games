@@ -49,9 +49,12 @@ router.get("/searchGame", (req, res, next) => {
 //SHOW OWNED LIST
 router.get("/ownedGames", (req, res) => {
   const {owned_games} = req.user;
-  console.log({owned_games})
-  Game.find({})
+
+  console.log(owned_games)
+  User.find({})
+  .populate(owned_games)
   .then((games) => {
+    console.log(games)
     res.render("public/ownedGames", {games, isAuthenticated: req.user })
   })
 })
