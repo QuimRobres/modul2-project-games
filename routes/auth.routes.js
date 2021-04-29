@@ -17,7 +17,7 @@ const logged = async (req) => {
   } catch (error) { }
 };
 
-//SIGNUP
+//RENDERS SIGNUP VIEW
 router.get('/signup', async (req, res, next) => {
   try {
     const session = await logged(req);
@@ -27,7 +27,7 @@ router.get('/signup', async (req, res, next) => {
   }
     
 })
-
+//CREATES USER
 router.post('/signup', (req, res, next) => {
   const { username, email, password } = req.body;
 
@@ -60,11 +60,12 @@ router.post('/signup', (req, res, next) => {
   })
 })
 
-//LOGIN
+//RENDERS LOGIN PAGE
 router.get('/login', isLoggedOut, (req, res) => {
   res.render('auth/login', {errorMessage: req.flash("error")[0]});
 })
 
+//LOGS THE USER
 router.post('/login', passport.authenticate("local", {
   successRedirect: "/public/profile",
   failureRedirect: "/auth/login",
