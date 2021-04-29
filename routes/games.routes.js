@@ -67,9 +67,6 @@ router.get("/searchGameResult/numOfPLayers8", (req, res) => {
   })
 })
 
-
-
-
 //SEARCH BY TIME
 router.get("/searchGameTime", (req, res) => {
   res.render("public/searchGameTime")
