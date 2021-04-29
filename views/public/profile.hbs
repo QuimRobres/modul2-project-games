@@ -2,7 +2,7 @@
 
 <h2>{{user.username}}'s Profile</h2>
 <a href="/public/ownedGames">{{user.username}}'s collection</a>
-<a href="/public/wishlist/:id">{{user.username}}'s wishlist</a>
+<a href="/public/wishlist/{{this_id}}">{{user.username}}'s wishlist</a>
 {{#if owner}}
 <a href="/private/edit-profile">Edit your Profile</a>
 {{/if}}
