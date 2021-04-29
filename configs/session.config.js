@@ -1,7 +1,7 @@
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 
-const DBURL = "mongodb://localhost/modul2-project-games";
+
 
 module.exports = (app) => {
     app.use(
@@ -13,7 +13,7 @@ module.exports = (app) => {
                 maxAge: 3600000
             },
             store: MongoStore.create({
-                mongoUrl: DBURL
+                mongoUrl: process.env.DBURL
             })
         })
     )
