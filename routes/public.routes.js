@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const express = require("express");
-const { isLoggedIn } = require("../middlewares");
+const { isLoggedOut, isLoggedIn } = require("../middlewares");
 const router = express.Router();
 const Game = require("../models/Game.model");
 const User = require("../models/User.model");
@@ -61,7 +61,7 @@ router.get("/ownedGames", isLoggedIn, (req, res) => {
 })
 
 //SHOW WISHLIST
-router.get("/wishlist", isLoggedIn, (req, res) => {
+router.get("/wishlist", isLoggedOut, (req, res) => {
   const {wishlist} = req.user;
   let arrGames = wishlist.map((gameId) => {
    return Game.findById(gameId).then((results) => {
