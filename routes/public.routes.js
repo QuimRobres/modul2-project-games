@@ -10,7 +10,7 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
 });
 
 //ACCESS
-router.get("/profile/:id", isLoggedIn, (req, res, next) => {
+router.get("/profile/:id", (req, res, next) => {
   const {id} = req.params;
   User.findById(id)
   .then((user) => {
