@@ -55,7 +55,6 @@ router.get("/ownedGames", (req, res) => {
      return results
    }) 
   })
-  console.log("GAMES ARRAY", arrGames)
   Promise.all(arrGames).then((results) => {
     res.render("public/ownedGames", {results, isAuthenticated: req.user})
   })
@@ -70,7 +69,6 @@ router.get("/wishlist", (req, res) => {
      return results
    }) 
   })
-  console.log("GAMES ARRAY", arrGames)
   Promise.all(arrGames).then((results) => {
     res.render("public/wishlist", {results, isAuthenticated: req.user})
   })

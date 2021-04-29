@@ -1,7 +1,7 @@
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 
-
+DBURL = process.env.DBURL;
 
 module.exports = (app) => {
     app.use(
@@ -13,7 +13,7 @@ module.exports = (app) => {
                 maxAge: 3600000
             },
             store: MongoStore.create({
-                mongoUrl: process.env.DBURL
+                mongoUrl: DBURL
             })
         })
     )

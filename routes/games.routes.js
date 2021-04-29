@@ -114,7 +114,6 @@ router.get("/searchGameResult/random", (req, res) => {
     .catch((error) => console.error(error));
 });
 
-
 //SHOW GAME DETAILS
 router.get("/gameDetail/:id", (req, res) => {
   const { id } = req.params;
