@@ -77,6 +77,10 @@ router.get("/wishlist", isLoggedIn, (req, res) => {
 router.get("/wishlist/:id", isLoggedIn, (req, res) => {
   const {wishlist} = req.user;
   const {id} = req.params;
+  console.log(id)
+  console.log(wishlist)
+  console.log("params", req.params)
+  console.log("user", req.user)
   User.findById(id)
   let arrGames = wishlist.map((gameId) => {
    return Game.findById(gameId).then((results) => {
