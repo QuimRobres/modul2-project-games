@@ -25,7 +25,6 @@ router.get('/signup', async (req, res, next) => {
   } catch (error) {
     console.log(error);
   }
-
 })
 
 //CREATES USER
