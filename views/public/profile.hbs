@@ -1,7 +1,7 @@
 <div id='user-page'>
     <h1>{{user.username}}'s Profile</h1>
     <div class='user-menu'>
-        <a href="/public/ownedGames" class='user-btn-content'>{{user.username}}'s collection</a>
+        <a href="/public/ownedGames/{{user.id}}" class='user-btn-content'>{{user.username}}'s collection</a>
         <a href="/public/wishlist/{{user.id}}" class='user-btn-content'>{{user.username}}'s wishlist</a>
         {{#if owner}}
         <a href="/private/edit-profile" class='user-btn-content'>Edit your Profile</a>
