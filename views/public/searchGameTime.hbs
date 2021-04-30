@@ -1,14 +1,16 @@
-
-<ul>
-    <li><a href="/public/searchGameResult/duration/5/30">5min - 30min</a></li>
-    <li><a href="/public/searchGameResult/duration30to60">30min - 60min</a></li>
-    <li><a href="/public/searchGameResult/duration30to90">30min - 90min</a></li>
-    <li><a href="/public/searchGameResult/duration90orMore">More than 90min</a></li>
-</ul>
-
-{{#if games}}
-    {{#each games}}
-    {{> gameCard}}
-    {{/each}}
-{{/if}}
-
+<div id='search-by-time' class='show-game-list'>
+    <h1>Search by play time</h1>
+    <ul class='btn-list'>
+        <li><a href="/public/searchGameResult/duration/5/30" class='sp-search-btn'>5min - 30min</a></li>
+        <li><a href="/public/searchGameResult/duration30to60" class='sp-search-btn'>30min - 60min</a></li>
+        <li><a href="/public/searchGameResult/duration30to90" class='sp-search-btn'>30min - 90min</a></li>
+        <li><a href="/public/searchGameResult/duration90orMore" class='sp-search-btn'>More than 90min</a></li>
+    </ul>
+    <div class='insert-partial'>
+        {{#if games}}
+        {{#each games}}
+        {{> gameCard}}
+        {{/each}}
+        {{/if}}
+    </div>
+</div>

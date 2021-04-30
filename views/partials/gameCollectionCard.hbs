@@ -1,0 +1,22 @@
+<div class="game-page card">
+    <div class='card-image'>
+        <img src='{{this.image_url}}' alt='game-image'>
+    </div>
+    <div class='card-content'>
+        <div class='card-description'>
+            <a href="/gameDetail/{{this._id}}">
+                <h5>{{this.name}}</h5>
+            </a>
+            <p>Players: {{this.min_players}} - {{this.max_players}}</p>
+            <p>Playtime: {{this.min_playtime}} - {{this.max_playtime}} mins</p>
+            <p>Rating:{{this.average_user_rating}} | Price:{{this.price}}$</p>
+        </div>
+        <div>
+            <form action='/private/gameDetail/wishOut' method="POST">
+                <input type="text" name="id" value={{this._id}} style="display: none;">
+                <button class="own delete-btn" type='submit' formaction='/private/gameDetail/ownOut'>Remove from my
+                    collection</button>
+            </form>
+        </div>
+    </div>
+</div>

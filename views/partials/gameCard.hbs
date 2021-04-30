@@ -1,14 +1,15 @@
 <div class="card">
+
   <div class='card-image'>
     <img src='{{this.image_url}}' alt='game-image'>
   </div>
+
   <div class='card-description'>
     <a href="/gameDetail/{{this._id}}">
       <h5>{{this.name}}</h5>
     </a>
     <p>Players: {{this.min_players}} - {{this.max_players}}</p>
     <p>Playtime: {{this.min_playtime}} - {{this.max_playtime}} mins</p>
-    <p>Rating:{{this.average_user_rating}}</p>
-    <p>{{this.price}}</p>
+    <p>Rating:{{this.average_user_rating}} | Price:{{this.price}}$</p>
   </div>
 </div>
