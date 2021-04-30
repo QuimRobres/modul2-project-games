@@ -270,7 +270,7 @@ h3 {
 }
 
 .card-description {
-  background-color: #c30000;
+  background-color: #870000;
   padding-bottom: 10px;
   padding-top: 0px;
   color: white;
@@ -314,7 +314,8 @@ h5 {
 .show-game-list h1,
 .personal-list h1,
 #search-users h1,
-#user-page h1 {
+#user-page h1,
+#game-detail h1 {
   margin-top: 20px;
 }
 
@@ -346,6 +347,64 @@ h5 {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  width:100%;
+}
+
+/* ****GAME DETAIL**** */
+#game-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detail-game-page {
+  background-color: #870000;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 100px;
+  height: 60vh;
+  width: 100vw;
+}
+
+.img-container {
+  height: 100%;
+  width: 30%;
+}
+
+.game-page-img {
+  height:100%;
+  width: 100%;
+}
+
+.game-page-description {
+  width:98%;
+}
+
+.game-page-description h5{
+font-size: 24px;
+}
+
+.game-page-description p{
+  font-size: 14px;
+}
+
+.game-page-details {
+  display:flex;
+  flex-direction: column;
+  width:70%;
+  height: 100%;
+  color: white;
+}
+
+.game-page-info {
+  font-size: 16px;
+  padding: 5px;
+}
+
+.game-page-form {
+  margin-top: 20px;
+  margin-left: 50px;
 }
 
 /* ****PERSONAL LISTS**** */
@@ -356,7 +415,7 @@ h5 {
 }
 
 .card-content {
-  background-color: #c30000;
+  background-color: #870000;
 }
 
 .delete-btn {

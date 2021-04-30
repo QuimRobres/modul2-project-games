@@ -1,24 +1,25 @@
-<div class="game-page">
-    <img src='{{this.image_url}}' alt='game-image'>
-
-    <div>
-        <form action='/private/gameDetail/own' method="POST">
-            <input type="text" name="id" value={{this._id}} style="display: none;">
-            <button class="own" type='submit'>Add game to collection</button>
-            <button class="wish" type='submit' formaction='/private/gameDetail/wish'>Add game to wishlist</button>
-        </form>
+<div class="detail-game-page">
+    <div class='img-container'>
+        <img src='{{this.image_url}}' alt='game-image' class='game-page-img'>
     </div>
-
-    <div>
-        <h5>{{this.name}}</h5>
-        <p>{{this.description_preview}}</p>
-        <p>Players: {{this.min_players}} - {{this.max_players}}</p>
-        <p>Playtime: {{this.min_playtime}} - {{this.max_playtime}} mins</p>
-        <p>Rating: {{this.average_user_rating}}</p>
-        <p>Price: {{this.price}}$</p>
-    </div>
-    <div>
-        <p>Publication year:{{this.year_published}}</p>
-        <p>Minimum age:{{this.min_age}}</p>
+    <div class='game-page-details'>
+        <div class='game-page-description'>
+            <h5>{{this.name}}</h5>
+            <p>{{this.description_preview}}</p>
+        </div>
+        <div class='game-page-info'>
+            <p><b>Players:</b> {{this.min_players}} - {{this.max_players}}</p>
+            <p><b>Playtime:</b> {{this.min_playtime}} - {{this.max_playtime}} mins</p>
+            <p><b>Rating:</b> {{this.average_user_rating}} | <b>Price:</b> {{this.price}}$</p>
+            <p><b>Publication year:</b> {{this.year_published}} | <b>Minimum age:</b> {{this.min_age}}</p>
+        </div>
+        <div class='game-page-form'>
+            <form action='/private/gameDetail/own' method="POST">
+                <input type="text" name="id" value={{this._id}} style="display: none;">
+                <button class="own searchbar-btn" type='submit'>Add game to collection</button>
+                <button class="wish searchbar-btn" type='submit' formaction='/private/gameDetail/wish'>Add game to
+                    wishlist</button>
+            </form>
+        </div>
     </div>
 </div>

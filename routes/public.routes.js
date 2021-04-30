@@ -89,7 +89,7 @@ router.get("/ownedGames/:id", isLoggedIn, (req, res) => {
       res.render("public/ownedGames", { results, isAuthenticated: req.user });
     });
   })
-  .catch((error) => console.error(error))
+    .catch((error) => console.error(error))
 });
 
 //SHOW WISHLIST
@@ -120,7 +120,7 @@ router.get("/wishlist/:id", isLoggedIn, (req, res) => {
       res.render("public/wishlist", { results, isAuthenticated: req.user });
     });
   })
-  .catch((error) => console.error(error))
+    .catch((error) => console.error(error))
 });
 
 //SEARCH FOR GAMES VIEW
