@@ -1,19 +1,19 @@
-<h1>Sign Up</h1>
+<div class='log-form' id='signin-form'>
 
-<form action="/auth/signup" method="POST">
+    <h1>Sign Up</h1>
 
-    <label for="username">Username:</label>
-    <input required type="text" name="username">
+    <form action="/auth/signup" method="POST" class='form'>
+        <label for="username" class='form-text'>Username:</label>
+        <input required type="text" name="username" class="search-bar">
+        <label for="email" class='form-text'>Email:</label>
+        <input required type="text" name="email" class="search-bar">
+        <label for="password" class='form-text'>Password:</label>
+        <input required type="password" name="password" class="search-bar">
+        <button type="submit" class='searchbar-btn'>Sign up</button>
+    </form>
 
-    <label for="email">Email:</label>
-    <input required type="text" name="email">
-
-    <label for="password">Password:</label>
-    <input required type="password" name="password">
-
-    <button type="submit">Sign up</button>
-</form>
-
-{{#if errorMessage}}
-<p>{{errorMessage}}</p>
-{{/if}}
+    {{#if errorMessage}}
+    <p>{{errorMessage}}</p>
+    {{/if}}
+    
+</div>

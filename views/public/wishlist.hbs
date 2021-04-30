@@ -1,5 +1,8 @@
-<h1>Wishlist</h1>
-
-{{#each results}}
-    {{> gameListCard}}
-{{/each}}
+<div id='wishlist-page' class='personal-list'>
+    <h1>Wishlist</h1>
+    <div class='insert-partial'>
+        {{#each results}}
+        {{> gameWishlistCard}}
+        {{/each}}
+    </div>
+</div>

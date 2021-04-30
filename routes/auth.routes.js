@@ -22,47 +22,48 @@ router.get('/signup', async (req, res, next) => {
   try {
     const session = await logged(req);
     res.render('auth/signup');
-  } catch(error) {
+  } catch (error) {
     console.log(error);
   }
-    
+
 })
+
 //CREATES USER
 router.post('/signup', (req, res, next) => {
   const { username, email, password } = req.body;
 
-  if(!username || !email || !password) {
-    res.render('auth/signup', { errorMessage: "Username and password are required"})
+  if (!username || !email || !password) {
+    res.render('auth/signup', { errorMessage: "Username and password are required" })
   }
 
-  User.findOne({username})
-  .then(user => {
-    if (user) {
-      res.render('auth/signup', { errorMessage: "User already exists"})
-    }
+  User.findOne({ username })
+    .then(user => {
+      if (user) {
+        res.render('auth/signup', { errorMessage: "User already exists" })
+      }
 
-    const salt = bcrypt.genSaltSync(saltRound);
-    const hashPassword = bcrypt.hashSync(password, salt);
+      const salt = bcrypt.genSaltSync(saltRound);
+      const hashPassword = bcrypt.hashSync(password, salt);
 
-    User.create({ username, email, password: hashPassword})
-    .then((newUser) => {
-      req.login((newUser), (error) => {
-        if(error){
-          next(error)
-        }
-        res.redirect("/")
-      })
+      User.create({ username, email, password: hashPassword })
+        .then((newUser) => {
+          req.login((newUser), (error) => {
+            if (error) {
+              next(error)
+            }
+            res.redirect("/")
+          })
+        })
+        .catch((error) => {
+          console.log(error);
+          return res.render('auth/signup', { errorMessage: "Server error. Try again." })
+        })
     })
-    .catch((error) => {
-      console.log(error);
-      return res.render('auth/signup', { errorMessage: "Server error. Try again."})
-    })
-  })
 })
 
 //RENDERS LOGIN PAGE
 router.get('/login', isLoggedOut, (req, res) => {
-  res.render('auth/login', {errorMessage: req.flash("error")[0]});
+  res.render('auth/login', { errorMessage: req.flash("error")[0] });
 })
 
 //LOGS THE USER
@@ -78,7 +79,6 @@ router.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
 })
-
 
 const ensureLogin = require('connect-ensure-login');
 

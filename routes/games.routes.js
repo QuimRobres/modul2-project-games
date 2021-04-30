@@ -6,18 +6,18 @@ const User = require('../models/User.model');
 
 //SEARCH GAME FOR KIDS
 router.get("/searchGameResult/kids", (req, res) => {
-  Game.find({ min_age: { $lte: 12 } })
+  Game.find({ min_age: { $lte: 10 } })
     .then((games) => {
-        res.render("public/searchGameResult", { games, isAuthenticated: req.user });
+      res.render("public/searchGameResult", { games, isAuthenticated: req.user });
     })
-    .catch ((error) => console.error(error));
+    .catch((error) => console.error(error));
 });
 
-function compare( a, b ) {
-  if ( a.average_user_rating > b.average_user_rating ){
+function compare(a, b) {
+  if (a.average_user_rating > b.average_user_rating) {
     return -1;
   }
-  if ( a.average_user_rating < b.average_user_rating ){
+  if (a.average_user_rating < b.average_user_rating) {
     return 1;
   }
   return 0;
@@ -33,38 +33,41 @@ router.get("/searchGameResult/rate", (req, res) => {
     .catch((error) => console.error(error));
 });
 
-
 //SHOW SEARCH USER PAGE
 router.get("/searchGamePlayers", (req, res) => {
   res.render("public/searchGamePlayers")
 })
+
 //SEARCH GAME TWO PLayers
 router.get("/searchGameResult/numOfPLayers2", (req, res) => {
-  Game.find({max_players : "2"})
-  .then((games) => {
-    res.render("public/searchGamePlayers", { games, isAuthenticated: req.user });
-  })
+  Game.find({ max_players: "2" })
+    .then((games) => {
+      res.render("public/searchGamePlayers", { games, isAuthenticated: req.user });
+    })
 })
+
 //SEARCH GAME FOUR PLayers
 router.get("/searchGameResult/numOfPLayers4", (req, res) => {
-  Game.find({max_players : "4"})
-  .then((games) => {
-    res.render("public/searchGamePlayers", { games, isAuthenticated: req.user });
-  })
+  Game.find({ max_players: "4" })
+    .then((games) => {
+      res.render("public/searchGamePlayers", { games, isAuthenticated: req.user });
+    })
 })
+
 //SEARCH GAME SIX PLayers
 router.get("/searchGameResult/numOfPLayers6", (req, res) => {
-  Game.find({max_players : "6"})
-  .then((games) => {
-    res.render("public/searchGamePlayers", { games, isAuthenticated: req.user });
-  })
+  Game.find({ max_players: "6" })
+    .then((games) => {
+      res.render("public/searchGamePlayers", { games, isAuthenticated: req.user });
+    })
 })
+
 //SEARCH GAME EIGHT PLayers
 router.get("/searchGameResult/numOfPLayers8", (req, res) => {
-  Game.find({max_players : "8"})
-  .then((games) => {
-    res.render("public/searchGamePlayers", { games, isAuthenticated: req.user });
-  })
+  Game.find({ max_players: "8" })
+    .then((games) => {
+      res.render("public/searchGamePlayers", { games, isAuthenticated: req.user });
+    })
 })
 
 //SEARCH BY TIME
@@ -74,34 +77,34 @@ router.get("/searchGameTime", (req, res) => {
 
 //SEARCH TIME 5MIN TO 30MIN
 router.get("/searchGameResult/duration/:min/:max", (req, res) => {
-  Game.find({$and: [{min_playtime: {$gte: req.params.min}}, {max_playtime: {$lte: req.params.max}}]})
-  .then((games) => {
-    res.render("public/searchGameTime", { games, isAuthenticated: req.user });
-  })
+  Game.find({ $and: [{ min_playtime: { $gte: req.params.min } }, { max_playtime: { $lte: req.params.max } }] })
+    .then((games) => {
+      res.render("public/searchGameTime", { games, isAuthenticated: req.user });
+    })
 })
 
 //SEARCH TIME 30MIN TO 60MIN
 router.get("/searchGameResult/duration30to60", (req, res) => {
-  Game.find({$and: [{min_playtime: {$gte: 30}}, {max_playtime: {$lte: 60}}]})
-  .then((games) => {
-    res.render("public/searchGameTime", { games, isAuthenticated: req.user });
-  })
+  Game.find({ $and: [{ min_playtime: { $gte: 30 } }, { max_playtime: { $lte: 60 } }] })
+    .then((games) => {
+      res.render("public/searchGameTime", { games, isAuthenticated: req.user });
+    })
 })
 
 //SEARCH TIME 30MIN TO 90MIN
 router.get("/searchGameResult/duration30to90", (req, res) => {
-  Game.find({$and: [{min_playtime: {$gte: 30}}, {max_playtime: {$lte: 90}}]})
-  .then((games) => {
-    res.render("public/searchGameTime", { games, isAuthenticated: req.user });
-  })
+  Game.find({ $and: [{ min_playtime: { $gte: 30 } }, { max_playtime: { $lte: 90 } }] })
+    .then((games) => {
+      res.render("public/searchGameTime", { games, isAuthenticated: req.user });
+    })
 })
 
 //SEARCH TIME 90min+
 router.get("/searchGameResult/duration90orMore", (req, res) => {
-  Game.find({min_playtime: {$gte: 90}})
-  .then((games) => {
-    res.render("public/searchGameTime", { games, isAuthenticated: req.user });
-  })
+  Game.find({ min_playtime: { $gte: 90 } })
+    .then((games) => {
+      res.render("public/searchGameTime", { games, isAuthenticated: req.user });
+    })
 })
 
 //SEARCH A RANDOM GAME
@@ -123,6 +126,5 @@ router.get("/gameDetail/:id", (req, res) => {
     })
     .catch((error) => console.error(error))
 })
-
 
 module.exports = router;

@@ -1,15 +1,19 @@
-<h1>Login</h1>
+<div class='log-form' id='login-form'>
 
-<form action="/auth/login" method="POST">
-  <label for="username">Username:</label>
-  <input type="text" name="username">
+  <h1>Login</h1>
 
-  <label for="password">Password:</label>
-  <input type="password" name="password">
+  <form action="/auth/login" method="POST" class='form'>
+    <label for="username" class='form-text'>Username:</label>
+    <input type="text" name="username" class="search-bar">
 
-  <button type="submit">Login</button>
-</form>
+    <label for="password" class='form-text'>Password:</label>
+    <input type="password" name="password" class="search-bar">
 
-{{#if errorMessage}}
-<p>{{errorMessage}}</p>
-{{/if}}
+    <button type="submit" class='searchbar-btn'>Login</button>
+  </form>
+
+  {{#if errorMessage}}
+  <p>{{errorMessage}}</p>
+  {{/if}}
+
+</div>

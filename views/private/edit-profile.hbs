@@ -1,19 +1,22 @@
-<h1>edit profile</h1>
+<div class='log-form' id='edit-form'>
+    <h1>Edit your profile</h1>
 
-<form action="/private/edit-profile" method="POST">
-    <label for="email">Email:</label>
-    <input required type="text" name="email">
+    <form action="/private/edit-profile" method="POST" class='form'>
+        <label for="email" class='form-text'>Email:</label>
+        <input required type="text" name="email" class="search-bar">
 
-    <label for="username">Username:</label>
-    <input required type="text" name="username">
+        <label for="username" class='form-text'>Username:</label>
+        <input required type="text" name="username" class="search-bar">
 
 
-    <label for="password">Password:</label>
-    <input type="password" name="password">
+        <label for="password" class='form-text'>Password:</label>
+        <input type="password" name="password" class="search-bar">
 
-    <button type="submit">Edit</button>
-</form>
+        <button type="submit" class='searchbar-btn'>Edit</button>
+    </form>
 
-{{#if errorMessage}}
-<p>{{errorMessage}}</p>
-{{/if}}
+    {{#if errorMessage}}
+    <p>{{errorMessage}}</p>
+    {{/if}}
+
+</div>

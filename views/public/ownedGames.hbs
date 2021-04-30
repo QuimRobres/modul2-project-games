@@ -1,5 +1,9 @@
-<h1>Owned Games</h1>
-
-{{#each results}}
-    {{> gameListCard}}
-{{/each}}
+<div id='collection-page' class='personal-list'>
+    <h1>Collection</h1>
+    <div class='insert-partial'>
+        {{#each results}}
+        {{> gameCollectionCard}}
+        {{/each}}
+    </div>
+    
+</div>

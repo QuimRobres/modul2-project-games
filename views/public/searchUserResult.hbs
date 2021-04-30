@@ -1,8 +1,11 @@
-<h1>User search</h1>
-<art>
-    {{> searchForm}}
-</art>
-
-{{#each users}}
- {{> userCard}}
-{{/each}}
+<div id='search-users'>
+    <h1>User search</h1>
+    <div>
+        {{> searchForm}}
+    </div>
+    <div class='searchpage'>
+        {{#each users}}
+        {{> userCard}}
+        {{/each}}
+    </div>
+</div>
